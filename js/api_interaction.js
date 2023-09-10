@@ -4,6 +4,7 @@ const backendBtn = document.getElementById('btnFiltrarLivrosBack');
 const dataBtn = document.getElementById('btnFiltrarLivrosDados');
 const disponibleBtn = document.getElementById('btnLivrosDisponiveis');
 const byPrice = document.getElementById('btnOrdenarPorPreco');
+const buttons = document.querySelectorAll('.btn');
 
 
 //Função para mostrar os livros na página
@@ -30,4 +31,14 @@ function applyDiscount(books) {
         return { ...book, preco: book.preco - (book.preco * discount) }
     })
     return booksDataWithDicount;
+}
+
+buttons.forEach(button => button.addEventListener('click', booksFilter));
+
+
+function booksFilter() {
+    const button = document.getElementById(this.id);
+    const category = button.value;
+    filteredBooks = booksData.filter(book => book.categoria == category);
+    console.table(filteredBooks);
 }
