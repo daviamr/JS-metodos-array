@@ -9,17 +9,18 @@ const buttons = document.querySelectorAll('.btn');
 
 //Função para mostrar os livros na página
 function showBooks(APIdata) {
+    books_box_content.innerHTML = '';
     APIdata.forEach((book) => {
         books_box_content.innerHTML +=
             `<div class="livro">
-        <img class="livro__imagens" src="${book.imagem}" alt="${book.alt}" />
-        <h2 class="livro__titulo">${book.titulo}</h2>
-        <p class="livro__descricao">${book.autor}</p>
-        <p class="livro__preco" id="preco">${book.preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
-    <div class="tags">
-    <span class="tag">${book.categoria}</span>
-    </div>
-    </div > `
+                <img class="livro__imagens" src="${book.imagem}" alt="${book.alt}" />
+                <h2 class="livro__titulo">${book.titulo}</h2>
+                <p class="livro__descricao">${book.autor}</p>
+                <p class="livro__preco" id="preco">${book.preco.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
+                <div class="tags">
+                    <span class="tag">${book.categoria}</span>
+                </div>
+            </div >`
     })
 }
 
@@ -40,5 +41,5 @@ function booksFilter() {
     const button = document.getElementById(this.id);
     const category = button.value;
     filteredBooks = booksData.filter(book => book.categoria == category);
-    console.table(filteredBooks);
+    showBooks(filteredBooks);
 }
