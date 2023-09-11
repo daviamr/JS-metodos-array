@@ -1,5 +1,5 @@
-////////////////////////////////////////////////////////////////////////////////
-// Função criando manualmente a div que contém as informações do livro;
+//////////////////////////////////////////////////////////////////////////////
+//Função criando manualmente a div que contém as informações do livro;
 
 // function createCover(img, alt, title, autor, price, category) {
 //     const divBox = document.createElement('div');
