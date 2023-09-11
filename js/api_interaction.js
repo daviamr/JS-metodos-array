@@ -8,9 +8,9 @@ const buttons = document.querySelectorAll('.btn');
 
 
 //Função para mostrar os livros na página
-function showBooks(APIdata) {
-    books_box_content.innerHTML = '';
-    APIdata.forEach((book) => {
+function showBooks(booksData) { //Primeira vez chamada no main.js, executa e mostra todos os livros
+    books_box_content.innerHTML = ''; //Quando um botão é clicado, ele reseta os livros e chama a função novamente com a array da categoria do botao clicado como parâmetro
+    booksData.forEach((book) => {
         books_box_content.innerHTML +=
             `<div class="livro">
                 <img class="livro__imagens" src="${book.imagem}" alt="${book.alt}" />
@@ -34,12 +34,18 @@ function applyDiscount(books) {
     return booksDataWithDicount;
 }
 
+//Evento adicionado no array que contém todos os botões
 buttons.forEach(button => button.addEventListener('click', booksFilter));
 
 
-function booksFilter() {
-    const button = document.getElementById(this.id);
-    const category = button.value;
-    filteredBooks = booksData.filter(book => book.categoria == category);
+function booksFilter() { //Quando chamada
+    const button = document.getElementById(this.id); //Verifica qual o id do botão clicado
+    const category = button.value; //Obtém o atributo 'value' do botão clicado
+    filteredBooks = booksData.filter(book => book.categoria == category); //Repassa o 'value' como parametro na condicional
     showBooks(filteredBooks);
 }
+
+
+
+
+/// 04 - ORDENANDO A LISTA (MÉTODOS DE ARRAY)
